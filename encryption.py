@@ -10,18 +10,24 @@ def letterToNumber(letter):
 def encrypter(message, key):
     newMessage = ''
     for letter in message:
+      if letter == ' ':
+        newMessage += ' '
+      else:
         newIndex = letterToNumber(letter) + int(key)
         if newIndex > 25:
-            newIndex -= 26
+          newIndex -= 26
         newMessage += letters[newIndex]
     return newMessage
 
 def decrypter(message, key):
     newMessage = ''
     for letter in message:
+      if letter == ' ':
+        newMessage += ' '
+      else:
         newIndex = letterToNumber(letter) - int(key)
         if newIndex < 0:
-            newIndex += 26
+          newIndex += 26
         newMessage += letters[newIndex]
     return newMessage
 
@@ -30,7 +36,7 @@ inputing = True
 while inputing:
     message = input('What is the message')
     for letter in message:
-        if letter not in letters:
+        if letter not in letters and letter != ' ':
             inputing = True
             break
         else:
