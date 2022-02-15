@@ -32,15 +32,10 @@ def decrypter(message, key):
     return newMessage
 
 whatDo = input('Do you want to encrypt or decrypt a message')
-inputing = True
-while inputing:
+f = open('input.txt', 'r')
+message = f.read()
+if message == '':
     message = input('What is the message')
-    for letter in message:
-        if letter not in letters and letter != ' ':
-            inputing = True
-            break
-        else:
-            inputing = False
 
 while True:
     key = input('What is the key')
@@ -50,6 +45,12 @@ while True:
         break
 
 if whatDo == 'encrypt':
-    print(encrypter(message, key))
+  f = open("output.txt", "w")
+  f.write(encrypter(message, key))
+  f.close()
+  print(encrypter(message, key))
 if whatDo == 'decrypt':
-    print(decrypter(message, key))
+  f = open("output.txt", "w")
+  f.write(decrypter(message, key))
+  f.close()
+  print(decrypter(message, key))
